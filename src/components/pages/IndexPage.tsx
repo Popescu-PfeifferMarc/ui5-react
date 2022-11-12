@@ -9,11 +9,17 @@ import {
 	LinkDesign,
 	ShellBar,
 } from '@ui5/webcomponents-react';
+//@ts-ignore
+import { getLanguage, setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
+
+//@ts-ignore
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 
 import '../../styles/IndexPage.module.css';
 
 const IndexPage = () => {
 	const [count, setCount] = useState(0);
+	const l = useI18nBundle('myApp');
 
 	return (
 		<>
@@ -32,6 +38,8 @@ const IndexPage = () => {
 					Getting Started with UI5 Web Component for React
 				</Link>
 				<Button onClick={() => setCount(count + 1)}>Test Button {count}</Button>
+				<span>{getLanguage()}</span>
+				<span>{l.getText('PLEASE_WAIT')}</span>
 			</FlexBox>
 		</>
 	);
