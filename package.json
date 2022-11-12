@@ -9,6 +9,7 @@
 		"format": "npx prettier --config package.json --write ."
 	},
 	"dependencies": {
+		"@tanstack/react-query": "^4.15.0",
 		"@tanstack/react-router": "0.0.1-beta.11",
 		"@ui5/webcomponents": "~1.9.0",
 		"@ui5/webcomponents-base": "^1.9.1",
