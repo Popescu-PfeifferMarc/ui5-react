@@ -16,6 +16,7 @@ import { getLanguage, setLanguage } from '@ui5/webcomponents-base/dist/config/La
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 
 import '../../styles/IndexPage.module.css';
+import router from '../../utils/router';
 
 const IndexPage = () => {
 	const [count, setCount] = useState(0);
@@ -40,6 +41,9 @@ const IndexPage = () => {
 				<Button onClick={() => setCount(count + 1)}>Test Button {count}</Button>
 				<span>{getLanguage()}</span>
 				<span>{l.getText('PLEASE_WAIT')}</span>
+				<span>
+					<router.Link to="/foobar">FoobarPage</router.Link>
+				</span>
 			</FlexBox>
 		</>
 	);

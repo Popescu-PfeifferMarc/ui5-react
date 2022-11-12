@@ -1,9 +1,12 @@
-import { resolve, join } from 'path';
+import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const APP_PATH = resolve(process.cwd(), 'src');
 const DIST_PATH = resolve(process.cwd(), 'dist');
+const PUBLIC_PATH = resolve(process.cwd(), 'public');
+const INDEX_PATH = resolve(process.cwd(), 'index.html');
 
 /** @type {import('webpack').Configuration} */
 const webpackConfig = {
@@ -11,6 +14,7 @@ const webpackConfig = {
 	output: {
 		filename: 'bundle.js',
 		path: DIST_PATH,
+        publicPath: '/',
 	},
 	mode: process.env.NODE_ENV || 'development',
 	resolve: {
@@ -18,6 +22,7 @@ const webpackConfig = {
 	},
 	devServer: {
 		static: APP_PATH,
+		historyApiFallback: true,
 	},
 	module: {
 		rules: [
@@ -42,9 +47,17 @@ const webpackConfig = {
 		],
 	},
 	plugins: [
+		new CopyPlugin({
+			patterns: [
+				{
+					from: PUBLIC_PATH,
+					to: '',
+				},
+			],
+		}),
 		new HtmlWebpackPlugin({
 			inject: true,
-			template: join(APP_PATH, 'index.html'),
+			template: INDEX_PATH,
 		}),
 		new ForkTsCheckerWebpackPlugin(),
 	],
