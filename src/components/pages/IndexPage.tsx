@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+	Button,
 	FlexBox,
 	FlexBoxAlignItems,
 	FlexBoxDirection,
@@ -7,15 +8,15 @@ import {
 	Link,
 	LinkDesign,
 	ShellBar,
-	ThemeProvider,
-	Button,
 } from '@ui5/webcomponents-react';
-import '../styles/index.css';
-import '../styles/App.css';
 
-function App() {
+import '../../styles/IndexPage.module.css';
+
+const IndexPage = () => {
+	const [count, setCount] = useState(0);
+
 	return (
-		<ThemeProvider>
+		<>
 			<ShellBar primaryTitle="UI5 Web Components for React Template" />
 			<FlexBox
 				style={{ width: '100%', height: '100vh' }}
@@ -30,10 +31,10 @@ function App() {
 				>
 					Getting Started with UI5 Web Component for React
 				</Link>
-				<Button>Test Button</Button>
+				<Button onClick={() => setCount(count + 1)}>Test Button {count}</Button>
 			</FlexBox>
-		</ThemeProvider>
+		</>
 	);
-}
+};
 
-export default App;
+export default IndexPage;
