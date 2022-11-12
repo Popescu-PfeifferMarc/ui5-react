@@ -12,9 +12,11 @@ specifiers:
     '@types/react': ^18.0.25
     '@types/react-dom': ^18.0.8
     '@ui5/webcomponents': ~1.9.0
+    '@ui5/webcomponents-base': ^1.9.1
     '@ui5/webcomponents-fiori': ~1.9.0
     '@ui5/webcomponents-icons': ~1.9.0
     '@ui5/webcomponents-react': ^1.4.1
+    '@ui5/webcomponents-react-base': ^1.4.0
     babel-loader: ^9.1.0
     css-loader: ^6.7.1
     css-modules-typescript-loader: ^4.0.1
@@ -38,9 +40,11 @@ specifiers:
 dependencies:
     '@tanstack/react-router': 0.0.1-beta.11_biqbaboplfbrettd7655fr4n2y
     '@ui5/webcomponents': 1.9.1
+    '@ui5/webcomponents-base': 1.9.1
     '@ui5/webcomponents-fiori': 1.9.1
     '@ui5/webcomponents-icons': 1.9.1
-    '@ui5/webcomponents-react': 1.4.1_vtjzs3osoqdfzaiulbn4dqzvty
+    '@ui5/webcomponents-react': 1.4.1_tgs5rxfo4nnkkrzssswtoytbau
+    '@ui5/webcomponents-react-base': 1.4.0_5zadfqilfczilmxji4hp3yhjg4
     http-server: 14.1.1
     react: 18.2.0
     react-dom: 18.2.0_react@18.2.0
@@ -2084,7 +2088,7 @@ packages:
             '@ui5/webcomponents-base': 1.9.1
         dev: false
 
-    /@ui5/webcomponents-react-base/1.4.0_fan5qbzahqtxlm5dzefqlqx5ia:
+    /@ui5/webcomponents-react-base/1.4.0_5zadfqilfczilmxji4hp3yhjg4:
         resolution:
             {
                 integrity: sha512-KSB7Vyi75hLnOyCY+eLUeZh/hF6KOnllIgDn3mjYajp83RcQ92TNba/duIbURntg2koXEOxgJQBMMFNoTnw74g==,
@@ -2101,10 +2105,11 @@ packages:
                 optional: true
         dependencies:
             '@types/react': 18.0.25
+            '@ui5/webcomponents-base': 1.9.1
             react: 18.2.0
         dev: false
 
-    /@ui5/webcomponents-react/1.4.1_vtjzs3osoqdfzaiulbn4dqzvty:
+    /@ui5/webcomponents-react/1.4.1_tgs5rxfo4nnkkrzssswtoytbau:
         resolution:
             {
                 integrity: sha512-zLJn7c83dWzWFd1ybqZyjc8rZMs1sN3J67hkoMTZf3oglR45x8w9LUHK7PyyjU3tTAU3LUm4jXzBavVf5U6AJA==,
@@ -2132,9 +2137,10 @@ packages:
             '@types/react': 18.0.25
             '@types/react-dom': 18.0.8
             '@ui5/webcomponents': 1.9.1
+            '@ui5/webcomponents-base': 1.9.1
             '@ui5/webcomponents-fiori': 1.9.1
             '@ui5/webcomponents-icons': 1.9.1
-            '@ui5/webcomponents-react-base': 1.4.0_fan5qbzahqtxlm5dzefqlqx5ia
+            '@ui5/webcomponents-react-base': 1.4.0_5zadfqilfczilmxji4hp3yhjg4
             clsx: 1.2.1
             react: 18.2.0
             react-dom: 18.2.0_react@18.2.0
