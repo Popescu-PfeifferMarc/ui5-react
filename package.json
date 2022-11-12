@@ -3,8 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "webpack s --config ./webpack.config.js --mode=development",
-		"build": "webpack --progress --mode=production",
+		"dev": "webpack s --config ./webpack.config.mjs --mode=development",
+		"build": "webpack --config ./webpack.config.mjs --progress --mode=production",
 		"start": "http-server dist -p 9999 -o",
 		"format": "npx prettier --config package.json --write ."
 	},

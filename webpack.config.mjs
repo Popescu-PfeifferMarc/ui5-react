@@ -1,20 +1,24 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+import { resolve, join } from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-const APP_PATH = path.resolve(__dirname, 'src');
+const APP_PATH = resolve(process.cwd(), 'src');
+const DIST_PATH = resolve(process.cwd(), 'dist');
 
-module.exports = {
+/** @type {import('webpack').Configuration} */
+const webpackConfig = {
 	entry: APP_PATH,
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist'),
+		path: DIST_PATH,
 	},
 	mode: process.env.NODE_ENV || 'development',
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js', 'jsx', '.json'],
 	},
-	devServer: { static: path.join(__dirname, 'src') },
+	devServer: {
+		static: APP_PATH,
+	},
 	module: {
 		rules: [
 			{
@@ -38,7 +42,12 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new HtmlWebpackPlugin({ inject: true, template: path.join(APP_PATH, 'index.html') }),
+		new HtmlWebpackPlugin({
+			inject: true,
+			template: join(APP_PATH, 'index.html'),
+		}),
 		new ForkTsCheckerWebpackPlugin(),
 	],
 };
+
+export default webpackConfig;
