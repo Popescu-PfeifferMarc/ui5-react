@@ -5,7 +5,6 @@ import {
 	FlexBoxAlignItems,
 	FlexBoxDirection,
 	FlexBoxJustifyContent,
-	LinkDesign,
 	ShellBar,
 } from '@ui5/webcomponents-react';
 import { useLocale } from '../../utils/localeHelpers';

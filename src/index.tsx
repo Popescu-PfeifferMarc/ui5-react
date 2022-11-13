@@ -18,7 +18,8 @@ import './styles/globals.css';
 loadLocalizations();
 
 // React initialization
-const root = createRoot(document.getElementById('root')!);
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(document.getElementById('root')!)!;
 root.render(
 	<React.StrictMode>
 		<ThemeProvider>

@@ -1,6 +1,5 @@
-// @ts-expect-error
+// @ts-expect-error missing type definitions
 import { registerI18nLoader } from '@ui5/webcomponents-base/dist/asset-registries/i18n.js';
-//@ts-ignore
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 
 import '@ui5/webcomponents/dist/Assets.js';
