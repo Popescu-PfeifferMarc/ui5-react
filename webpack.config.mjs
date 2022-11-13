@@ -16,6 +16,7 @@ const webpackConfig = {
 		path: DIST_PATH,
         publicPath: '/',
 	},
+	devtool: 'source-map',
 	mode: process.env.NODE_ENV || 'development',
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js', 'jsx', '.json'],
