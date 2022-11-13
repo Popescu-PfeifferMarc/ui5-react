@@ -9,7 +9,7 @@ import {
 } from '@ui5/webcomponents-react';
 import { useLocale } from '../../utils/localeHelpers';
 
-import '../../styles/IndexPage.module.css';
+import styles from '../../styles/IndexPage.module.css';
 import ILink from '../general/ILink';
 
 const IndexPage = () => {
@@ -33,6 +33,7 @@ const IndexPage = () => {
 				<ILink to="/foobar" design="Emphasized">
 					Foobar
 				</ILink>
+				<span className={styles.testClass}>test h1</span>
 			</FlexBox>
 		</>
 	);

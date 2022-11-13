@@ -20,6 +20,8 @@ import Link from '../general/ILink';
 const FoobarPage = () => {
 	return (
 		<div>
+			<h1>test h1</h1>
+			<br />
 			FoobarPage
 			<br />
 			<Link to="/" design="Subtle">
