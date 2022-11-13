@@ -7,7 +7,7 @@ import '@ui5/webcomponents-fiori/dist/Assets.js';
 import '@ui5/webcomponents-icons/dist/Assets.js';
 import '@ui5/webcomponents-react/dist/Assets.js';
 
-const APP_NAME = 'myApp';
+const APP_NAME = 'ui5-react-test';
 
 const loadLocalizations = () =>
 	['de', 'en'].forEach((lang) =>
