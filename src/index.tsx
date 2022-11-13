@@ -16,10 +16,7 @@ import TanStackQueryDevtools from './components/devtools/TanStackQueryDevtools';
 import './styles/globals.css';
 
 // Localizations
-loadLocalizations([
-	{ lang: 'de', path: '/assets/i18n/messagebundle_de.properties' },
-	{ lang: 'en', path: '/assets/i18n/messagebundle_en.properties' },
-]);
+loadLocalizations('myApp');
 
 // React initialization
 const root = createRoot(document.getElementById('root')!);
