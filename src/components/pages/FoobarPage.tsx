@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import router from '../../utils/router';
+
+import Link from '../general/Link';
 
 const FoobarPage = () => {
 	return (
 		<div>
 			FoobarPage
-			<span>
-				<router.Link to="/">Home</router.Link>
-			</span>
+			<br />
+			<Link to="/" design="Subtle">
+				Foobar
+			</Link>
 		</div>
 	);
 };

@@ -9,11 +9,3 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
-[aria-label='Open React Query Devtools'] {
-	margin-left: 80px !important;
-}
-
-[aria-label='Open TanStack Router Devtools'] {
-	margin-bottom: 20px !important;
-}

@@ -1,15 +1,14 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Outlet, RouterProvider } from '@tanstack/react-router';
 import { ThemeProvider } from '@ui5/webcomponents-react';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { RouterProvider } from 'react-router-dom';
 
 import reportWebVitals from './utils/reportWebVitals';
 import loadLocalizations from './utils/loadLocalizations';
 import router from './utils/router';
 import queryClient from './utils/queryClient';
 
-import TanStackRouterDevtools from './components/devtools/TanStackRouterDevtools';
 import TanStackQueryDevtools from './components/devtools/TanStackQueryDevtools';
 
 // Global CSS
@@ -24,10 +23,7 @@ root.render(
 	<React.StrictMode>
 		<ThemeProvider>
 			<QueryClientProvider client={queryClient}>
-				<RouterProvider router={router}>
-					<Outlet />
-					<TanStackRouterDevtools router={router} />
-				</RouterProvider>
+				<RouterProvider router={router} />
 				<TanStackQueryDevtools />
 			</QueryClientProvider>
 		</ThemeProvider>

@@ -1,18 +1,19 @@
 import React from 'react';
-import { createRouteConfig, createReactRouter } from '@tanstack/react-router';
+
+import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 
 import IndexPage from '../components/pages/IndexPage';
 import FoobarPage from '../components/pages/FoobarPage';
 
-const routeConfig = createRouteConfig().createChildren((createRoute) => [
-	createRoute({
+const router = createBrowserRouter([
+	{
 		path: '/',
 		element: <IndexPage />,
-	}),
-	createRoute({
-		path: 'foobar',
+	},
+	{
+		path: '/foobar',
 		element: <FoobarPage />,
-	}),
+	},
 ]);
 
-export default createReactRouter({ routeConfig });
+export default router;

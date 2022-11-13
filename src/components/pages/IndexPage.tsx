@@ -5,8 +5,8 @@ import {
 	FlexBoxAlignItems,
 	FlexBoxDirection,
 	FlexBoxJustifyContent,
-	Link,
 	LinkDesign,
+	Link as UILink,
 	ShellBar,
 } from '@ui5/webcomponents-react';
 //@ts-ignore
@@ -16,7 +16,7 @@ import { getLanguage, setLanguage } from '@ui5/webcomponents-base/dist/config/La
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 
 import '../../styles/IndexPage.module.css';
-import router from '../../utils/router';
+import Link from '../general/Link';
 
 const IndexPage = () => {
 	const [count, setCount] = useState(0);
@@ -31,19 +31,19 @@ const IndexPage = () => {
 				justifyContent={FlexBoxJustifyContent.Center}
 				alignItems={FlexBoxAlignItems.Center}
 			>
-				<Link
+				<UILink
 					href="https://sap.github.io/ui5-webcomponents-react/"
 					target="_blank"
 					design={LinkDesign.Emphasized}
 				>
 					Getting Started with UI5 Web Component for React
-				</Link>
+				</UILink>
 				<Button onClick={() => setCount(count + 1)}>Test Button {count}</Button>
 				<span>{getLanguage()}</span>
 				<span>{l.getText('PLEASE_WAIT')}</span>
-				<span>
-					<router.Link to="/foobar">FoobarPage</router.Link>
-				</span>
+				<Link to="/foobar" design="Default">
+					Foobar
+				</Link>
 			</FlexBox>
 		</>
 	);
