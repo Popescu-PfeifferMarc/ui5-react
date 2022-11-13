@@ -5,9 +5,9 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 
 import reportWebVitals from './utils/reportWebVitals';
-import loadLocalizations from './utils/loadLocalizations';
 import router from './utils/router';
 import queryClient from './utils/queryClient';
+import { loadLocalizations } from './utils/localeHelpers';
 
 import TanStackQueryDevtools from './components/devtools/TanStackQueryDevtools';
 
@@ -15,7 +15,7 @@ import TanStackQueryDevtools from './components/devtools/TanStackQueryDevtools';
 import './styles/globals.css';
 
 // Localizations
-loadLocalizations('myApp');
+loadLocalizations();
 
 // React initialization
 const root = createRoot(document.getElementById('root')!);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Link from '../general/Link';
+import Link from '../general/ILink';
 
 const FoobarPage = () => {
 	return (
