@@ -13,13 +13,15 @@ import {
 	TextArea,
 	CheckBox,
 	Text,
+	ShellBar,
 } from '@ui5/webcomponents-react';
 
 import Link from '../general/ILink';
 
 const FoobarPage = () => {
 	return (
-		<div>
+		<>
+			<ShellBar primaryTitle="UI5 Web Components for React Template" />
 			<h1>test h1</h1>
 			<br />
 			FoobarPage
@@ -135,7 +137,7 @@ const FoobarPage = () => {
 					</FormItem>
 				</FormGroup>
 			</Form>
-		</div>
+		</>
 	);
 };
 
