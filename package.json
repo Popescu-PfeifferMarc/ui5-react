@@ -12,6 +12,7 @@
 		"lint:fix": "eslint --fix ."
 	},
 	"dependencies": {
+		"@faker-js/faker": "^7.6.0",
 		"@tanstack/react-query": "^4.16.1",
 		"@tanstack/react-query-devtools": "4.16.1",
 		"@ui5/webcomponents": "~1.9.1",
