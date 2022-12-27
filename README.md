@@ -6,22 +6,22 @@ This is just me messing around with ui5 and react :)
 
 ```bash
 npm install -g pnpm@latest # install pnpm package manager
-pnpm install # install dependencies
+npm install # install dependencies
 ```
 
 ## Running
 
 ```bash
-pnpm run dev # start dev server
+npm run dev # start dev server
 ```
 
 ```bash
-pnpm run build # build production server
+npm run build # build production server
 ```
 
 ## Development
 
 ```bash
-pnpm run lint # lint
-pnpm run format # format all files
+npm run lint # lint
+npm run format # format all files
 ```
