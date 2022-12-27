@@ -5,7 +5,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 
 import reportWebVitals from './utils/reportWebVitals';
-import router from './utils/router';
+import router from './components/router';
 import queryClient from './utils/queryClient';
 import { loadLocalizations } from './utils/localeHelpers';
 

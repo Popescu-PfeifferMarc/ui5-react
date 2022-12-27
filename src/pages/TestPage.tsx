@@ -16,9 +16,9 @@ import {
 	ShellBar,
 } from '@ui5/webcomponents-react';
 
-import Link from '../general/ILink';
+import Link from '../components/general/ILink';
 
-const FoobarPage = () => {
+const TestPage = () => {
 	return (
 		<>
 			<ShellBar primaryTitle="UI5 Web Components for React Template" />
@@ -141,4 +141,4 @@ const FoobarPage = () => {
 	);
 };
 
-export default FoobarPage;
+export default TestPage;

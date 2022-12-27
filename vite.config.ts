@@ -11,4 +11,13 @@ export default defineConfig({
 			localsConvention: 'camelCase',
 		},
 	},
+	server: {
+		proxy: {
+			'/mis': {
+				target: 'https://dev.upgana.only.sap/mis',
+				auth: 'mis:mis',
+				secure: false,
+			},
+		},
+	},
 });

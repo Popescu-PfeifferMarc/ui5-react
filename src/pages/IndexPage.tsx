@@ -16,20 +16,12 @@ import {
 	Title,
 } from '@ui5/webcomponents-react';
 import { useQuery } from '@tanstack/react-query';
-import { useLocale } from '../../utils/localeHelpers';
+import { useLocale } from '../utils/localeHelpers';
 
-import styles from '../../styles/IndexPage.module.css';
-import ILink from '../general/ILink';
-import mockAPI, { Filter } from '../../utils/mockAPI';
+import styles from '../styles/IndexPage.module.css';
+import ILink from '../components/general/ILink';
 
 const IndexPage = () => {
-	const [filter, setFilter] = useState<Filter>({
-		/* TODO: Filter */
-	});
-	const eventQuery = useQuery({
-		queryKey: ['events', { filter }],
-		queryFn: () => mockAPI.getEvents(filter),
-	});
 	const l = useLocale();
 
 	return (
