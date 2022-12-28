@@ -12,12 +12,6 @@ export default defineConfig({
 		},
 	},
 	server: {
-		proxy: {
-			'/mis': {
-				target: 'https://dev.upgana.only.sap/mis',
-				auth: 'mis:mis',
-				secure: false,
-			},
-		},
+		https: false,
 	},
 });
