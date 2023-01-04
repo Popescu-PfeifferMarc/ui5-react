@@ -1,7 +1,7 @@
 import { defineConfig } from 'orval';
 
 export default defineConfig({
-	petstore: {
+	catfacts: {
 		output: {
 			mode: 'tags-split',
 			target: 'src/server/requests.ts',
