@@ -25,10 +25,10 @@ import { useGetFacts } from '../server/facts/facts';
 
 const IndexPage = () => {
 	const factQuery = useGetFacts();
-	const l = useLocale().getText;
 
+	/* TODO
+	const l = useLocale().getText;
 	console.log(l('PLEASE_WAIT'));
-	/*
 	{factQuery.isLoading && <span>{l('PLEASE_WAIT')}</span>}
 	*/
 
