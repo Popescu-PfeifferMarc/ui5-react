@@ -15,22 +15,14 @@ import {
 	ObjectStatus,
 	Title,
 } from '@ui5/webcomponents-react';
-import { useQuery } from '@tanstack/react-query';
 import { useLocale } from '../../utils/localeHelpers';
 
 import styles from '../../styles/IndexPage.module.css';
 import ILink from '../general/ILink';
-import mockAPI, { Filter } from '../../utils/mockAPI';
+import { useGetFacts } from '../../server/facts/facts';
 
 const IndexPage = () => {
-	const [filter, setFilter] = useState<Filter>({
-		/* TODO: Filter */
-	});
-	const eventQuery = useQuery({
-		queryKey: ['events', { filter }],
-		queryFn: () => mockAPI.getEvents(filter),
-	});
-	const l = useLocale();
+	const factQuery = useGetFacts();
 
 	return (
 		<DynamicPage
@@ -94,7 +86,17 @@ const IndexPage = () => {
 				justifyContent={FlexBoxJustifyContent.Start}
 				alignItems={FlexBoxAlignItems.Center}
 			>
-				abc
+				{factQuery.isLoading && <span>Loading...</span>}
+				{factQuery.isError && (
+					<span style={{ whiteSpace: 'pre-wrap' }}>
+						{JSON.stringify(factQuery.error, undefined, 4)}
+					</span>
+				)}
+				{factQuery.isSuccess && (
+					<span style={{ whiteSpace: 'pre-wrap' }}>
+						{JSON.stringify(factQuery.data, undefined, 4)}
+					</span>
+				)}
 			</FlexBox>
 		</DynamicPage>
 	);

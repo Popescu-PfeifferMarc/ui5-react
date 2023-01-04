@@ -9,21 +9,25 @@
 		"preview": "vite preview",
 		"format": "prettier --config package.json --write .",
 		"lint": "eslint .",
-		"lint:fix": "eslint --fix ."
+		"lint:fix": "eslint --fix .",
+		"backend": "rimraf src/server/ && orval --config orval.config.ts",
+		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@faker-js/faker": "^7.6.0",
-		"@tanstack/react-query": "^4.16.1",
-		"@tanstack/react-query-devtools": "4.16.1",
+		"@tanstack/react-query": "^4.20.9",
+		"@tanstack/react-query-devtools": "4.20.9",
 		"@ui5/webcomponents": "~1.9.1",
 		"@ui5/webcomponents-base": "^1.9.1",
 		"@ui5/webcomponents-fiori": "~1.9.1",
 		"@ui5/webcomponents-icons": "~1.9.1",
 		"@ui5/webcomponents-react": "^1.4.1",
 		"@ui5/webcomponents-react-base": "^1.4.0",
+		"axios": "^1.2.2",
+		"orval": "^6.10.3",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.4.3",
+		"rimraf": "^3.0.2",
 		"web-vitals": "^3.0.4"
 	},
 	"devDependencies": {
@@ -31,12 +35,12 @@
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.8",
 		"@typescript-eslint/eslint-plugin": "^5.42.1",
-		"@vitejs/plugin-react": "^2.2.0",
+		"@vitejs/plugin-react": "^3.0.0",
 		"eslint": "^8.27.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"prettier": "^2.7.1",
 		"typescript": "^4.8.4",
-		"vite": "^3.2.3"
+		"vite": "^4.0.4"
 	},
 	"eslintConfig": {
 		"env": {
@@ -80,7 +84,9 @@
 			"import/no-unresolved": "off",
 			"import/no-extraneous-dependencies": "off",
 			"no-console": "off",
-			"no-unused-vars": "warn"
+			"no-unused-vars": "warn",
+			"max-len": "off",
+			"import/prefer-default-export": "off"
 		},
 		"ignorePatterns": [
 			"node_modules",
