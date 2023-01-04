@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Badge,
 	Breadcrumbs,
@@ -15,14 +15,22 @@ import {
 	ObjectStatus,
 	Title,
 } from '@ui5/webcomponents-react';
-import { useLocale } from '../../utils/localeHelpers';
+import { useLocale } from '../utils/localeHelpers';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 import styles from '../../styles/IndexPage.module.css';
-import ILink from '../general/ILink';
-import { useGetFacts } from '../../server/facts/facts';
+
+import ILink from '../components/ILink';
+import { useGetFacts } from '../server/facts/facts';
 
 const IndexPage = () => {
 	const factQuery = useGetFacts();
+	const l = useLocale().getText;
+
+	console.log(l('PLEASE_WAIT'));
+	/*
+	{factQuery.isLoading && <span>{l('PLEASE_WAIT')}</span>}
+	*/
 
 	return (
 		<DynamicPage
@@ -86,7 +94,8 @@ const IndexPage = () => {
 				justifyContent={FlexBoxJustifyContent.Start}
 				alignItems={FlexBoxAlignItems.Center}
 			>
-				{factQuery.isLoading && <span>Loading...</span>}
+				<ILink to="/foobar">Foobar</ILink>
+				<br />
 				{factQuery.isError && (
 					<span style={{ whiteSpace: 'pre-wrap' }}>
 						{JSON.stringify(factQuery.error, undefined, 4)}

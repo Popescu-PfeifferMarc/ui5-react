@@ -16,7 +16,7 @@ import {
 	ShellBar,
 } from '@ui5/webcomponents-react';
 
-import Link from '../general/ILink';
+import Link from '../components/ILink';
 
 const FoobarPage = () => {
 	return (

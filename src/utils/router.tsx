@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import IndexPage from '../components/pages/IndexPage';
-import FoobarPage from '../components/pages/FoobarPage';
+import IndexPage from '../pages/IndexPage';
+import FoobarPage from '../pages/FoobarPage';
 
 const router = createBrowserRouter([
 	{
