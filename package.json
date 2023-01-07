@@ -16,6 +16,7 @@
 	"dependencies": {
 		"@tanstack/react-query": "^4.20.9",
 		"@tanstack/react-query-devtools": "4.20.9",
+		"@tanstack/react-table": "^8.7.4",
 		"@ui5/webcomponents": "~1.9.1",
 		"@ui5/webcomponents-base": "^1.9.1",
 		"@ui5/webcomponents-fiori": "~1.9.1",
@@ -86,7 +87,9 @@
 			"no-console": "off",
 			"no-unused-vars": "warn",
 			"max-len": "off",
-			"import/prefer-default-export": "off"
+			"import/prefer-default-export": "off",
+			"react/react-in-jsx-scope": "off",
+			"react/destructuring-assignment": "off"
 		},
 		"ignorePatterns": [
 			"node_modules",

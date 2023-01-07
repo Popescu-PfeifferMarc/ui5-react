@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@tanstack/react-query': ^4.20.9
   '@tanstack/react-query-devtools': 4.20.9
+  '@tanstack/react-table': ^8.7.4
   '@types/node': ^18.11.9
   '@types/react': ^18.0.25
   '@types/react-dom': ^18.0.8
@@ -30,6 +31,7 @@ specifiers:
 dependencies:
   '@tanstack/react-query': 4.20.9_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query-devtools': 4.20.9_hin5uqs2feg5fwcu6eooischsu
+  '@tanstack/react-table': 8.7.4_biqbaboplfbrettd7655fr4n2y
   '@ui5/webcomponents': 1.9.3
   '@ui5/webcomponents-base': 1.9.3
   '@ui5/webcomponents-fiori': 1.9.3
@@ -1081,6 +1083,18 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
+  /@tanstack/react-table/8.7.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-4Q1OV3kUSxbtekclS3sqjCyCDowqCPruUCfHm1nGoPSmVLRCHoQ1E2rmzTVGeocEKgV9TDnj39tOgGwcADPuPA==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.7.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@tanstack/react-virtual/3.0.0-beta.18_react@18.2.0:
     resolution: {integrity: sha512-mnyCZT6htcRNw1jVb+WyfMUMbd1UmXX/JWPuMf6Bmj92DB/V7Ogk5n5rby5Y5aste7c7mlsBeMF8HtpwERRvEQ==}
     engines: {node: '>=12'}
@@ -1089,6 +1103,11 @@ packages:
     dependencies:
       '@tanstack/virtual-core': 3.0.0-beta.18
       react: 18.2.0
+    dev: false
+
+  /@tanstack/table-core/8.7.4:
+    resolution: {integrity: sha512-OPhzca7e83KGukxLpZ+4F9OBp9CZXi9b/OGJBH8dlC3wpffcSSDczYGUGJKG7wirXQ6cUVYL+9G6UrrdnblKNQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /@tanstack/virtual-core/3.0.0-beta.18:

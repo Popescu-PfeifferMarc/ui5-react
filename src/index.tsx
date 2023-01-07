@@ -5,11 +5,11 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 
 import reportWebVitals from './utils/reportWebVitals';
-import router from './utils/router';
+import router from './pages/_router';
 import queryClient from './utils/queryClient';
 import { loadLocalizations } from './utils/localeHelpers';
 
-import TanStackQueryDevtools from './components/devtools/TanStackQueryDevtools';
+import TanStackQueryDevtools from './components/TanStackQueryDevtools';
 
 // Global CSS
 import './styles/globals.css';
