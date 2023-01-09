@@ -1,7 +1,7 @@
 import Axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 export const AXIOS_INSTANCE = Axios.create({
-	baseURL: 'https://catfact.ninja/',
+	baseURL: 'http://localhost:8000/mis/',
 });
 
 export const backendRequest = <T>(config: AxiosRequestConfig): Promise<T> => {

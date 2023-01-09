@@ -8,6 +8,7 @@ import { TableRow } from '@ui5/webcomponents-react/dist/webComponents/TableRow';
 import { TableCell } from '@ui5/webcomponents-react/dist/webComponents/TableCell';
 
 import PageWrapper from '../components/PageWrapper';
+import { useMisApiEventsEventsGetCollection } from '../server/event/event';
 
 type Person = {
 	firstName: string;
@@ -84,6 +85,10 @@ const EventListPage = () => {
 		columns,
 		getCoreRowModel: getCoreRowModel(),
 	});
+
+	const { isLoading, data: queryData, error } = useMisApiEventsEventsGetCollection();
+
+	console.log({ isLoading, queryData, error });
 
 	return (
 		<PageWrapper header="Header" subHeader="Sub Header" content="content">
