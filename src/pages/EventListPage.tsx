@@ -58,35 +58,35 @@ const EventListPage = () => {
 		getCoreRowModel: getCoreRowModel(),
 	});
 
+	// TODO figure out a better way to synchronize these states
 	useEffect(() => {
-		if (eventQuery.isSuccess) {
-			console.log(eventQuery.data.data[0]);
-
-			setData(
-				eventQuery.data.data.map((row) => {
-					// row.self is of pattern: "/mis/events/239150/view/UpgradeNoUser"
-					const split = row.self.replaceAll('/mis/events/', '').split('/view/');
-
-					return {
-						systemId: row.attributes.permanentSystemInformation?.sid ?? '',
-						host: row.attributes.permanentSystemInformation?.host ?? '',
-						scenario: row.attributes.permanentSystemInformation?.runType ?? '',
-						title: row.title ?? '',
-						eventId: Number(split[0]),
-						eventView: split[1],
-						systemType: row.attributes.permanentSystemInformation?.systemType ?? '',
-						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-						startDate: new Date(
-							row.attributes.volatileSystemInformation![0].timestamp.value! * 1000,
-						),
-						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-						endDate: new Date(
-							row.attributes.volatileSystemInformation![1].timestamp.value! * 1000,
-						),
-					};
-				}),
-			);
+		if (!eventQuery.isSuccess) {
+			return;
 		}
+		setData(
+			eventQuery.data.data.map((row) => {
+				// row.self is of pattern: "/mis/events/239150/view/UpgradeNoUser"
+				const split = row.self.replaceAll('/mis/events/', '').split('/view/');
+
+				return {
+					systemId: row.attributes.permanentSystemInformation?.sid ?? '',
+					host: row.attributes.permanentSystemInformation?.host ?? '',
+					scenario: row.attributes.permanentSystemInformation?.runType ?? '',
+					title: row.title ?? '',
+					eventId: Number(split[0]),
+					eventView: split[1],
+					systemType: row.attributes.permanentSystemInformation?.systemType ?? '',
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					startDate: new Date(
+						row.attributes.volatileSystemInformation![0].timestamp.value! * 1000,
+					),
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					endDate: new Date(
+						row.attributes.volatileSystemInformation![1].timestamp.value! * 1000,
+					),
+				};
+			}),
+		);
 	}, [eventQuery.data, eventQuery.isSuccess]);
 
 	const handleRowClicked = (eventId: string) => {
