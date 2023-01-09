@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
@@ -10,85 +10,88 @@ import { TableCell } from '@ui5/webcomponents-react/dist/webComponents/TableCell
 import PageWrapper from '../components/PageWrapper';
 import { useMisApiEventsEventsGetCollection } from '../server/event/event';
 
-type Person = {
-	firstName: string;
-	lastName: string;
-	age: number;
-	visits: number;
-	status: string;
-	progress: number;
+type EventRow = {
+	systemId: string;
+	host: string;
+	scenario: string;
+	title: string;
+	systemType: string;
+	startDate: Date;
+	endDate: Date;
+	eventId: number;
+	eventView: string;
 };
 
-const defaultData: Person[] = [
-	{
-		firstName: 'tanner',
-		lastName: 'linsley',
-		age: 24,
-		visits: 100,
-		status: 'In Relationship',
-		progress: 50,
-	},
-	{
-		firstName: 'tandy',
-		lastName: 'miller',
-		age: 40,
-		visits: 40,
-		status: 'Single',
-		progress: 80,
-	},
-	{
-		firstName: 'joe',
-		lastName: 'dirte',
-		age: 45,
-		visits: 20,
-		status: 'Complicated',
-		progress: 10,
-	},
-];
-
-const columnHelper = createColumnHelper<Person>();
+const columnHelper = createColumnHelper<EventRow>();
 
 const columns = [
-	columnHelper.accessor('firstName', {
+	columnHelper.accessor('systemId', {
 		cell: (info) => info.getValue(),
-		footer: (info) => info.column.id,
 	}),
-	columnHelper.accessor((row) => row.lastName, {
-		id: 'lastName',
-		cell: (info) => <i>{info.getValue()}</i>,
-		header: () => <span>Last Name</span>,
-		footer: (info) => info.column.id,
+	columnHelper.accessor('host', {
+		cell: (info) => info.getValue(),
 	}),
-	columnHelper.accessor('age', {
-		header: () => 'Age',
-		cell: (info) => info.renderValue(),
-		footer: (info) => info.column.id,
+	columnHelper.accessor('scenario', {
+		cell: (info) => info.getValue(),
 	}),
-	columnHelper.accessor('visits', {
-		header: () => <span>Visits</span>,
-		footer: (info) => info.column.id,
+	columnHelper.accessor('title', {
+		cell: (info) => info.getValue(),
 	}),
-	columnHelper.accessor('status', {
-		header: 'Status',
-		footer: (info) => info.column.id,
+	columnHelper.accessor('endDate', {
+		cell: (info) => info.getValue().toString(),
 	}),
-	columnHelper.accessor('progress', {
-		header: 'Profile Progress',
-		footer: (info) => info.column.id,
+	columnHelper.accessor('startDate', {
+		cell: (info) => info.getValue().toString(),
 	}),
 ];
 
 const EventListPage = () => {
-	const [data, setData] = useState(() => [...defaultData]);
+	const eventQuery = useMisApiEventsEventsGetCollection({
+		order_by: 'end_date desc',
+	});
+	// console.log({ isLoading, isSuccess, isError, queryData, error });
+
+	const [data, setData] = useState<EventRow[]>([]);
 	const table = useReactTable({
 		data,
 		columns,
 		getCoreRowModel: getCoreRowModel(),
 	});
 
-	const { isLoading, data: queryData, error } = useMisApiEventsEventsGetCollection();
+	useEffect(() => {
+		if (eventQuery.isSuccess) {
+			console.log(eventQuery.data.data[0]);
 
-	console.log({ isLoading, queryData, error });
+			setData(
+				eventQuery.data.data.map((row) => {
+					// row.self is of pattern: "/mis/events/239150/view/UpgradeNoUser"
+					const split = row.self.replaceAll('/mis/events/', '').split('/view/');
+
+					return {
+						systemId: row.attributes.permanentSystemInformation?.sid ?? '',
+						host: row.attributes.permanentSystemInformation?.host ?? '',
+						scenario: row.attributes.permanentSystemInformation?.runType ?? '',
+						title: row.title ?? '',
+						eventId: Number(split[0]),
+						eventView: split[1],
+						systemType: row.attributes.permanentSystemInformation?.systemType ?? '',
+						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						startDate: new Date(
+							row.attributes.volatileSystemInformation![0].timestamp.value! * 1000,
+						),
+						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						endDate: new Date(
+							row.attributes.volatileSystemInformation![1].timestamp.value! * 1000,
+						),
+					};
+				}),
+			);
+		}
+	}, [eventQuery.data, eventQuery.isSuccess]);
+
+	const handleRowClicked = (eventId: string) => {
+		console.log(eventId);
+	};
 
 	return (
 		<PageWrapper header="Header" subHeader="Sub Header" content="content">
@@ -115,7 +118,7 @@ const EventListPage = () => {
 					))}
 
 					{table.getRowModel().rows.map((row) => (
-						<TableRow key={row.id}>
+						<TableRow onClick={() => handleRowClicked(row.getValue('systemId'))} key={row.id}>
 							{row.getVisibleCells().map((cell) => (
 								<TableCell key={cell.id}>
 									{flexRender(cell.column.columnDef.cell, cell.getContext())}
