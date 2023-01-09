@@ -25,6 +25,12 @@ type EventRow = {
 const columnHelper = createColumnHelper<EventRow>();
 
 const columns = [
+	columnHelper.accessor('eventId', {
+		cell: (info) => info.getValue().toString(),
+	}),
+	columnHelper.accessor('eventView', {
+		cell: (info) => info.getValue().toString(),
+	}),
 	columnHelper.accessor('systemId', {
 		cell: (info) => info.getValue(),
 	}),
@@ -89,8 +95,9 @@ const EventListPage = () => {
 		);
 	}, [eventQuery.data, eventQuery.isSuccess]);
 
-	const handleRowClicked = (eventId: string) => {
-		console.log(eventId);
+	const handleRowClicked = (eventId: number, eventView: string) => {
+		console.log({ eventId, eventView });
+		// TODO navigate to event page
 	};
 
 	return (
@@ -118,7 +125,7 @@ const EventListPage = () => {
 					))}
 
 					{table.getRowModel().rows.map((row) => (
-						<TableRow onClick={() => handleRowClicked(row.getValue('systemId'))} key={row.id}>
+						<TableRow onClick={() => handleRowClicked(row.getValue('eventId'), row.getValue('eventView'))} key={row.id}>
 							{row.getVisibleCells().map((cell) => (
 								<TableCell key={cell.id}>
 									{flexRender(cell.column.columnDef.cell, cell.getContext())}
