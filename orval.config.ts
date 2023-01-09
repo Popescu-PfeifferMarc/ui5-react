@@ -1,7 +1,7 @@
 import { defineConfig } from 'orval';
 
 export default defineConfig({
-	catfacts: {
+	mis: {
 		output: {
 			mode: 'tags-split',
 			target: 'src/server/requests.ts',
@@ -15,7 +15,7 @@ export default defineConfig({
 				},
 			},
 		},
-		input: './catfacts.json',
+		input: './mis-openapi.json',
 		hooks: {
 			afterAllFilesWrite: ['prettier --write', 'eslint --fix'],
 		},
