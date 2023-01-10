@@ -9,6 +9,7 @@ import { TableCell } from '@ui5/webcomponents-react/dist/webComponents/TableCell
 
 import PageWrapper from '../components/PageWrapper';
 import { useMisApiEventsEventsGetCollection } from '../server/event/event';
+import { useNavigate } from 'react-router-dom';
 
 type EventRow = {
 	systemId: string;
@@ -83,25 +84,21 @@ const EventListPage = () => {
 					eventView: split[1],
 					systemType: row.attributes.permanentSystemInformation?.systemType ?? '',
 					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-					startDate: new Date(
-						row.attributes.volatileSystemInformation![0].timestamp.value! * 1000,
-					),
+					startDate: new Date(row.attributes.volatileSystemInformation![0].timestamp.value! * 1000),
 					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-					endDate: new Date(
-						row.attributes.volatileSystemInformation![1].timestamp.value! * 1000,
-					),
+					endDate: new Date(row.attributes.volatileSystemInformation![1].timestamp.value! * 1000),
 				};
 			}),
 		);
 	}, [eventQuery.data, eventQuery.isSuccess]);
 
-	const handleRowClicked = (eventId: number, eventView: string) => {
-		console.log({ eventId, eventView });
-		// TODO navigate to event page
-	};
+	const navigate = useNavigate();
+
+	const handleRowClicked = (eventId: number, eventView: string) =>
+		navigate(`/event/${eventId}/${eventView}/`);
 
 	return (
-		<PageWrapper header="Header" subHeader="Sub Header" content="content">
+		<PageWrapper header="Select an Event" content={<span>Filter Bar coming soon</span>}>
 			<div
 				style={{
 					width: '100%',
@@ -125,7 +122,12 @@ const EventListPage = () => {
 					))}
 
 					{table.getRowModel().rows.map((row) => (
-						<TableRow onClick={() => handleRowClicked(row.getValue('eventId'), row.getValue('eventView'))} key={row.id}>
+						<TableRow
+							onClick={() =>
+								handleRowClicked(row.getValue('eventId'), row.getValue('eventView'))
+							}
+							key={row.id}
+						>
 							{row.getVisibleCells().map((cell) => (
 								<TableCell key={cell.id}>
 									{flexRender(cell.column.columnDef.cell, cell.getContext())}

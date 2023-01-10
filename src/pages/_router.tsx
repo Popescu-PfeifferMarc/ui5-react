@@ -10,11 +10,11 @@ const router = createBrowserRouter([
 		element: <EventListPage />,
 	},
 	{
-		path: '/event/:event_id',
+		path: '/event/:event_id/:view_name',
 		element: <EventPage />,
 	},
 	{
-		path: '/event/:event_id/document/:document_id',
+		path: '/event/:event_id/:view_name/document/:document_id',
 		element: <DocumentPage />,
 	},
 ]);
