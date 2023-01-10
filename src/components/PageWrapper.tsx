@@ -5,6 +5,7 @@ import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/components/Dyna
 import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/components/DynamicPageTitle';
 import { Label } from '@ui5/webcomponents-react/dist/webComponents/Label';
 import { Title } from '@ui5/webcomponents-react/dist/webComponents/Title';
+import About from './About';
 
 const PageWrapper: React.FC<{
 	children: ReactNode;
@@ -19,7 +20,12 @@ const PageWrapper: React.FC<{
 		}
 		headerTitle={
 			<DynamicPageTitle
-				header={props.header === undefined ? undefined : <Title>{props.header}</Title>}
+				header={
+					<div>
+						{props.header === undefined ? undefined : <Title>{props.header}</Title>}
+						<About />
+					</div>
+				}
 				subHeader={props.subHeader === undefined ? undefined : <Label>{props.subHeader}</Label>}
 			/>
 		}
