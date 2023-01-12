@@ -16,7 +16,6 @@
 	"dependencies": {
 		"@tanstack/react-query": "^4.22.0",
 		"@tanstack/react-query-devtools": "^4.22.0",
-		"@tanstack/react-table": "^8.7.4",
 		"@ui5/webcomponents": "~1.9.3",
 		"@ui5/webcomponents-base": "^1.9.3",
 		"@ui5/webcomponents-fiori": "~1.9.3",
@@ -91,7 +90,8 @@
 			"max-len": "off",
 			"import/prefer-default-export": "off",
 			"react/react-in-jsx-scope": "off",
-			"react/destructuring-assignment": "off"
+			"react/destructuring-assignment": "off",
+			"react/jsx-curly-newline":  "off"
 		},
 		"ignorePatterns": [
 			"node_modules",

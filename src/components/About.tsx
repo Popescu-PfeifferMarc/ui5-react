@@ -8,7 +8,7 @@ const About: React.FC<Record<string, never>> = () => {
 
 	return (
 		<>
-			<Button icon="sys-help" onClick={() => setOpen(true)}/>
+			<Button icon="sys-help" onClick={() => setOpen(true)} />
 			<Dialog
 				open={open}
 				headerText="About this App"
